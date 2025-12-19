@@ -5,7 +5,7 @@ import os
 
 def run_automation():
     # Load
-    raw_path = 'namadataset_raw/nearest-earth-objects(1910-2024).csv'
+    raw_path = 'dataset_raw/nearest-earth-objects(1910-2024).csv'
     if not os.path.exists(raw_path):
         print("Dataset Raw tidak ditemukan!")
         return
@@ -25,7 +25,7 @@ def run_automation():
     X_train_scaled = scaler.fit_transform(X_train)
     
     # Save
-    output_dir = 'preprocessing/namadataset_preprocessing'
+    output_dir = 'preprocessing/nearest_earth_object_preprocessing'
     os.makedirs(output_dir, exist_ok=True)
     pd.DataFrame(X_train_scaled, columns=X.columns).to_csv(f'{output_dir}/X_train.csv', index=False)
     y_train.to_csv(f'{output_dir}/y_train.csv', index=False)
